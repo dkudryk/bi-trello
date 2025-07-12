@@ -5,10 +5,10 @@
   "license": "MIT",
   "author": "Dmytro Kudryk <dmytro.kudryk@gmail.com>",
   "scripts": {
-    "build": "tsc",
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
+    "@vercel/node": "^5.3.5",
     "axios": "^1.10.0",
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.0",

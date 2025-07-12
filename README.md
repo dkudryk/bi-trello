@@ -31,6 +31,35 @@ This service automatically:
    TASK_PREFIX=TID
    ```
 
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+This service can be easily deployed to Vercel for production use:
+
+1. **Install Vercel CLI** (optional)
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy to Vercel**
+   ```bash
+   vercel
+   ```
+
+   Or connect your GitHub repository to Vercel for automatic deployments.
+
+3. **Configure Environment Variables**
+   In your Vercel dashboard, go to your project settings and add the following environment variables:
+   - `TRELLO_API_KEY` - Your Trello API key
+   - `TRELLO_TOKEN` - Your Trello API token
+   - `TASK_PREFIX` - Prefix for task IDs (optional, defaults to `TID`)
+
+4. **Update Webhook URLs**
+   After deployment, update your webhook URLs to use your Vercel domain:
+   - Trello webhook: `https://your-app.vercel.app/trello`
+   - Bitbucket webhook: `https://your-app.vercel.app/bitbucket`
+
 ## 🔧 Configuration
 
 ### Environment Variables
@@ -156,16 +185,6 @@ Example:
 
 # Run in development mode
 yarn dev
-```
-
-### Building for production
-
-```bash
-# Build the project
-yarn build
-
-# Run compiled JavaScript
-node dist/index.js
 ```
 
 ## 📦 Dependencies
