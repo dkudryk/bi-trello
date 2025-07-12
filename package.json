@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Dmytro Kudryk <dmytro.kudryk@gmail.com>",
   "scripts": {
+    "build": "tsc",
     "start": "ts-node src/index.ts"
   },
   "dependencies": {

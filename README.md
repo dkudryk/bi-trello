@@ -49,9 +49,9 @@ This service automatically:
 3. Create a Power-Up - after creating it, open its settings.
 4. In the API Key / Secrets tab, you will find `API key` and `Secret`
 5. Copy `API key` and go to this link, replacing TRELLO_API_KEY with your newly obtained key:
-```
-https://trello.com/1/authorize?expiration=never&name=MyToken&scope=read,write&response_type=token&key=TRELLO_API_KEY
-```
+   ```
+   https://trello.com/1/authorize?expiration=never&name=MyToken&scope=read,write&response_type=token&key=TRELLO_API_KEY
+   ```
 6. After allowing, you will get a `token` in the browser — this will be your `TRELLO_TOKEN`.
 
 ## 🔗 Webhook Setup
@@ -59,39 +59,38 @@ https://trello.com/1/authorize?expiration=never&name=MyToken&scope=read,write&re
 ### Trello Webhook Configuration
 
 1. Begin by obtaining the ID of the Trello object you want to monitor (such as a board or card).
-    To get the ID of a board or card:
+   To get the ID of a board or card:
 
-    Take the board URL:
+   Take the board URL:
 
-    ```
-    https://trello.com/b/<board_id>/my-board
-    ```
+   ```
+   https://trello.com/b/<board_id>/my-board
+   ```
 
-    Use this API:
+   Use this API:
 
-    ```
-    https://api.trello.com/1/boards/<board_id>?key=TRELLO_API_KEY&token=TRELLO_TOKEN
-    ```
+   ```
+   https://api.trello.com/1/boards/<board_id>?key=TRELLO_API_KEY&token=TRELLO_TOKEN
+   ```
 
-    The response will have a field `id`.
+   The response will have a field `id`.
 
 2. Send this request to your server:
 
-    ```
-    curl -X POST "https://api.trello.com/1/webhooks" \
-      -d "key=TRELLO_API_KEY" \
-      -d "token=TRELLO_TOKEN" \
-      -d "callbackURL=http://your-domain.com/trello-webhook" \
-      -d "idModel=<id_of_board_or_card>" \
-      -d "description=My Trello webhook"
+   ```
+   curl -X POST "https://api.trello.com/1/webhooks" \
+     -d "key=TRELLO_API_KEY" \
+     -d "token=TRELLO_TOKEN" \
+     -d "callbackURL=http://your-domain.com/trello-webhook" \
+     -d "idModel=<id_of_board_or_card>" \
+     -d "description=My Trello webhook"
+   ```
 
-    ```
+   ⚠️ Important:
 
-    ⚠️ Important:
+   `callbackURL` must be publicly accessible with HTTPS.
 
-    `callbackURL` must be publicly accessible with HTTPS.
-
-    Trello checks this URL — when creating a webhook, it sends a HEAD or GET request, and your server must respond with a 200 OK status.
+   Trello checks this URL — when creating a webhook, it sends a HEAD or GET request, and your server must respond with a 200 OK status.
 
 ### Bitbucket Webhook Configuration
 
@@ -100,7 +99,6 @@ https://trello.com/1/authorize?expiration=never&name=MyToken&scope=read,write&re
    - **URL**: Your server's `/bitbucket` endpoint
    - **Triggers**: Pull request created
    - **Security**: Add authentication if needed
-
 
 ## 🚀 Usage
 
@@ -139,7 +137,6 @@ Configure this webhook in Bitbucket to trigger when pull requests are created:
 - Scans PR title, description, and branch name for task IDs
 - If a matching task ID is found, attaches the PR link to the corresponding Trello card
 
-
 ## 📝 Task ID Format
 
 Task IDs follow the pattern: `{TASK_PREFIX}{card_short_link}`
@@ -154,18 +151,18 @@ Example:
 ### Running in development mode
 
 ```bash
-# Install nodemon for development
-yarn add -D nodemon
-
-# Add to package.json scripts
+# Add dev script to package.json
 "dev": "nodemon src/index.ts"
+
+# Run in development mode
+yarn dev
 ```
 
 ### Building for production
 
 ```bash
-# Compile TypeScript
-yarn tsc
+# Build the project
+yarn build
 
 # Run compiled JavaScript
 node dist/index.js
@@ -184,7 +181,6 @@ node dist/index.js
 - `ts-node` - TypeScript execution
 - `nodemon` - Development server with auto-restart
 - `@types/*` - TypeScript type definitions
-
 
 ## 👨‍💻 Author
 
